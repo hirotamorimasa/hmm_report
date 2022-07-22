@@ -3,58 +3,39 @@
 #include <time.h>
 
 #include "./ball_color.h"
-#include "probability.h"
+#include "./probability.h"
 
-#define NUMBER 10	//ボールの個数
-#define BOX 3		//ツボの個数
+#define TRANSITION 2	//遷移数
 #define STATE 2	//遷移数 (自己ループか遷移するか)
+#define NUMBER 10	//ボールの個数
 #define STRING 10	//文字列数
 
+#define TSUBO_NUM 3 //ツボの数
 
-const char str[][STRING] = {"red", "blue"};	//ボールの色
+const char str[][STRING] = {"green", "red", "blue", "white"};	//ボールの色
 
-
-/*
-void keisan_processing(int ball[NUMBER], double state_probability[STATE][TRANSITION], double output_probability[STATE][TRANSITION])
-{
-		double p = 0.0;	//defaultの確率は1に設定
-		for(int i = 0; i < NUMBER - 1; i++)
-		{
-				if(count == 0)
-				{
-					// red
-					if(ball[i] == 0)
-							p = state_probability[i][];
-					// blue
-					else if(ball[i] == 1)
-							p *= state_probability[1][];
-					p *= output_probability[0][];
-				}
-				else if(count == 1)
-				{
-					if(ball[i] == 0)
-							p *= state_probability[0][];
-					else if(ball[i] == 1)
-							p *= state_probability[1][];
-					p *= output_probability[0][];
-				}
-		}
-}
-
-*/
 
 int main(void)
 {
-		double state_probability[BOX][NUMBER];	//状態確率a11~a2eにあたる
-		double output_probability[BOX][STATE];	//出力確率b11~b2eにあたる
-		int ball[NUMBER];	//ボールの色を記憶する
-		int ball_num[BOX];	//各箱にボールがいくつ入っているか記憶しておく変数		
+		double state_probability[TSUBO_NUM][STATE];	//状態確率a11~a2eにあたる
+		double output_probability[TSUBO_NUM][NUMBER];	//出力確率b11~b2eにあたる
+		
+		int ball[NUMBER];	
+		int tsubo[TSUBO_NUM][NUMBER];	//ツボの中に入っているボールの番号
+		int ball_count[TSUBO_NUM];
+
 		srand(time(NULL));
+		
+		//ball_color.h
+		ball_count_init(ball_count);
+//		ball_print(ball, str);
+		three_put_in(tsubo, ball, ball_count);
+		the_others_ball(tsubo, ball, ball_count);
+		test_print(tsubo, ball, ball_count);
 
-		ball_print(ball, str);
-		probability_print(state_probability, output_probability);
+		probability_print(state_probability, output_probability, ball_count);
+		
 		return 0;
-
 }
 
 
