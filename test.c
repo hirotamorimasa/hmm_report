@@ -4,6 +4,7 @@
 
 #include "./ball_color.h"
 #include "./probability.h"
+#include "./state.h"
 
 #define TRANSITION 2	//遷移数
 #define STATE 2	//遷移数 (自己ループか遷移するか)
@@ -23,6 +24,9 @@ int main(void)
 		int ball[NUMBER];	
 		int tsubo[TSUBO_NUM][NUMBER];	//ツボの中に入っているボールの番号
 		int ball_count[TSUBO_NUM];
+		
+		int state_loop_ransu;
+		double wa;
 
 		srand(time(NULL));
 		
@@ -33,8 +37,12 @@ int main(void)
 		the_others_ball(tsubo, ball, ball_count);
 		test_print(tsubo, ball, ball_count);
 
+		//probability.h
 		probability_print(state_probability, output_probability, ball_count);
 		
+		//state.h
+		loop(wa, state_loop_ransu, ball_count, state_probability, output_probability);
+
 		return 0;
 }
 

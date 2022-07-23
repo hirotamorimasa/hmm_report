@@ -42,20 +42,6 @@ void ball_count_init(int ball_count[TSUBO_NUM])
 }
 
 
-void ball_print(int ball[NUMBER], const char str[][STRING])
-{
-		Ball_color(ball);
-		
-		for(int i = 0; i < NUMBER; i++)
-				printf("%2d\t", ball[i]);
-		putchar('\n');
-
-		//ボールの色を表示
-		for(int i = 0; i < NUMBER; i++)
-				printf("%s\t", str[ball[i]]);
-		putchar('\n');
-}
-
 // とりあえずツボの中に３つボールを入れておく
 void three_put_in(int tsubo[TSUBO_NUM][NUMBER], int ball[NUMBER], int ball_count[TSUBO_NUM])
 {
@@ -77,8 +63,6 @@ void three_put_in(int tsubo[TSUBO_NUM][NUMBER], int ball[NUMBER], int ball_count
 
 			ball_count[i] += 1;
 		}
-		// 各ツボの中にボールが一つ入っているのでカウントしておく			
-//		ball_count[i] = 1;
 }
 
 // 残りのボールをツボの中に入れる
