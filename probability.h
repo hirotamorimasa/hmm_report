@@ -39,12 +39,10 @@ void ransu_output(int ball_count[TSUBO_NUM], double output_probability[TSUBO_NUM
 
 					else if(j > 0)
 					{
-						store = RAND_MAX;
-						do{
-							store /= 10.0;
-						}while(store > sum);
 
-						output_probability[i][j] = store;
+						do{
+							output_probability[i][j] = pow( (double)rand() / RAND_MAX, 2.0 );
+						}while(output_probability[i][j] > sum);
 					}
 					
 					sum -= output_probability[i][j];
