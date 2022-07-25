@@ -5,10 +5,10 @@
 
 #define TRANSITION 2    //遷移数
 #define STATE 2 //状態数 (自己ループか遷移するか)
-#define NUMBER 10	//ボールの個数
+#define NUMBER 12	//ボールの個数
 #define STRING 10	//文字列数
 
-#define TSUBO_NUM 3	//ツボの数
+#define TSUBO_NUM 4	//ツボの数
 
 
 

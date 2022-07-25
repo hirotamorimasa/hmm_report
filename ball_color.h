@@ -4,7 +4,7 @@
 
 #define TRANSITION 2	//遷移数
 #define STATE 2	//状態数
-#define NUMBER 10	//ボールの数
+#define NUMBER 12	//ボールの数
 #define STRING 10	//文字列
 
 // ボールの色を数字で識別
@@ -14,10 +14,10 @@
 #define WHITE 3
 
 #define SPAN_1	3
-#define SPAN_2	6
-#define SPAN_3	8
+#define SPAN_2	7
+#define SPAN_3	11
 
-#define TSUBO_NUM 3	//ツボの数
+#define TSUBO_NUM 4	//ツボの数
 
 
 void Ball_color(int ball[NUMBER])
@@ -96,7 +96,7 @@ void test_print(int tsubo[TSUBO_NUM][NUMBER], int ball[NUMBER], int ball_count[T
 {
 		for(int i = 0; i < TSUBO_NUM; i++)
 		{
-			printf("つぼ%dの個数:%2d(", i, ball_count[i]);
+			printf("つぼ%dの個数:%3d(", i, ball_count[i]);
 			
 			for(int j = 0; j < ball_count[i]; j++)
 			{

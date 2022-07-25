@@ -8,10 +8,10 @@
 
 #define TRANSITION 2	//遷移数
 #define STATE 2	//遷移数 (自己ループか遷移するか)
-#define NUMBER 10	//ボールの個数
+#define NUMBER 12	//ボールの個数
 #define STRING 10	//文字列数
 
-#define TSUBO_NUM 3 //ツボの数
+#define TSUBO_NUM 4 //ツボの数
 
 const char str[][STRING] = {"green", "red", "blue", "white"};	//ボールの色
 
@@ -32,7 +32,6 @@ int main(void)
 		
 		//ball_color.h
 		ball_count_init(ball_count);
-//		ball_print(ball, str);
 		three_put_in(tsubo, ball, ball_count);
 		the_others_ball(tsubo, ball, ball_count);
 		test_print(tsubo, ball, ball_count);
